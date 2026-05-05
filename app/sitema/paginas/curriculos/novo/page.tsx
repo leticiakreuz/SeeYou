@@ -1,1 +1,1 @@
-# essa pagina servew para cadastrar novos curriculos.
+/* # essa pagina servew para cadastrar novos curriculos. */

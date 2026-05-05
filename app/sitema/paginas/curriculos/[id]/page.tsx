@@ -1,1 +1,1 @@
-# essa pagina serve para visualizar os detalhes de um curriculo #selecionado, mostra todas informacoes do curriculo.
+/* # essa pagina serve para visualizar os detalhes de um curriculo #selecionado, mostra todas informacoes do curriculo. */
