@@ -1,0 +1,1 @@
+# visao geral resumo de todos curriculos cadastrados, com filtros por #stack, experiencia, etc os dados podem ser fake/mokados
