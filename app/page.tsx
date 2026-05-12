@@ -6,11 +6,44 @@ import { Heart, Share2, ExternalLink, Code, Database, Layers } from "lucide-reac
 export default function DevCVHub() {
   const [selectedStack, setSelectedStack] = useState("All");
 
+  // --- DADOS MOCKADOS (Substitua por uma chamada de API futuramente) ---
+  const devs = [
+    {
+      id: "1",
+      nome: "Alex Rivera",
+      nivel: "Senior",
+      stackPrincipal: "Back-end",
+      tecnologias: ["Go", "PostgreSQL", "Docker", "Kubernetes"],
+      bio: "Especialista em sistemas distribuídos e arquitetura de microsserviços."
+    },
+    {
+      id: "2",
+      nome: "Beatriz Silva",
+      nivel: "Pleno",
+      stackPrincipal: "Front-end",
+      tecnologias: ["React", "Next.js", "Tailwind", "TypeScript"],
+      bio: "Desenvolvedora focada em performance web e experiências de usuário."
+    },
+    {
+      id: "3",
+      nome: "Caio Martins",
+      nivel: "Junior",
+      stackPrincipal: "Full Stack",
+      tecnologias: ["Node.js", "React", "MongoDB", "Express"],
+      bio: "Entusiasta de código limpo e arquiteturas modernas de software."
+    }
+  ];
+
   const stacks = [
     { name: "Front-end", icon: <Code size={18} />, description: "Foca na interface e experiência do usuário (UI/UX). Trabalha com React, Vue, CSS e performance no navegador." },
     { name: "Back-end", icon: <Database size={18} />, description: "Cuida da lógica, servidores e banco de dados. Responsável pela segurança, APIs e processamento de dados." },
     { name: "Full Stack", icon: <Layers size={18} />, description: "Domina tanto o Front quanto o Back-end, tendo uma visão 360º da aplicação e sua arquitetura." }
   ];
+
+  // Filtra os devs com base na stack selecionada
+  const filteredDevs = devs.filter(dev => 
+    selectedStack === "All" || dev.stackPrincipal === selectedStack
+  );
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 selection:bg-indigo-500/30">
@@ -24,24 +57,23 @@ export default function DevCVHub() {
             <h1 className="text-2xl font-black tracking-tighter text-white">See<span className="text-indigo-500">You</span></h1>
           </div>
           <nav className="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#" className="hover:text-indigo-400 transition">Explorar Devs</a>
-            <a href="#" className="hover:text-indigo-400 transition">Empresas</a>
-            <a href="#" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full transition">Sou Desenvolvedor</a>
+            <a href="sitema/paginas/curriculos" className="hover:text-indigo-400 transition">Ver currículos</a>
+            <a href="sitema/paginas/curriculos/novo" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full transition">Sou Desenvolvedor</a>
           </nav>
         </div>
       </header>
 
-      {/* Guia de Carreiras (A explicação que você pediu) */}
+      {/* Guia de Carreiras */}
       <section className="max-w-7xl mx-auto py-12 px-4">
         <div className="grid md:grid-cols-3 gap-6">
           {stacks.map((stack) => (
             <div 
               key={stack.name} 
               onClick={() => setSelectedStack(stack.name)}
-              className={`p-6 rounded-2xl transition group cursor-pointer ${
+              className={`p-6 rounded-2xl transition group cursor-pointer border ${
                 selectedStack === stack.name
-                  ? 'bg-indigo-600/20 border border-indigo-500'
-                  : 'bg-slate-800/50 border border-slate-700 hover:border-indigo-500/50'
+                  ? 'bg-indigo-600/20 border-indigo-500'
+                  : 'bg-slate-800/50 border-slate-700 hover:border-indigo-500/50'
               }`}
             >
               <div className="flex items-center gap-3 mb-3 text-indigo-400">
@@ -76,12 +108,12 @@ export default function DevCVHub() {
         </div>
       </section>
 
-      {/* Lista de Devs (Robustez nos Cards) */}
+      {/* Lista de Devs (Dinâmica) */}
       <section className="max-w-7xl mx-auto py-16 px-4">
         <div className="flex justify-between items-end mb-8">
           <div>
             <h3 className="text-2xl font-bold text-white">Talentos em Destaque</h3>
-            <p className="text-slate-500">Filtrando por: <span className="text-indigo-400 font-mono">{selectedStack}</span></p>
+            <p className="text-slate-500">Filtrando por: <span className="text-indigo-400 font-mono uppercase text-xs tracking-widest">{selectedStack}</span></p>
           </div>
           {selectedStack !== "All" && (
             <button 
@@ -94,33 +126,48 @@ export default function DevCVHub() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
+          {filteredDevs.map((dev) => (
+            <div key={dev.id} className="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between hover:border-indigo-500/50 transition-all">
               <div>
                 <div className="flex justify-between items-start mb-4">
-                  <div className="w-16 h-16 bg-slate-700 rounded-full border-2 border-indigo-500"></div>
+                  {/* Avatar Placeholder */}
+                  <div className="w-16 h-16 bg-slate-700 rounded-full border-2 border-indigo-500 flex items-center justify-center font-bold text-white text-xl">
+                    {dev.nome.charAt(0)}
+                  </div>
                   <div className="flex gap-2">
-                    <Heart size={20} className="text-slate-400 hover:text-white cursor-pointer" />
-                    <Share2 size={20} className="text-slate-400 hover:text-white cursor-pointer" />
+                    <Heart size={20} className="text-slate-400 hover:text-red-500 transition-colors cursor-pointer" />
+                    <Share2 size={20} className="text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer" />
                   </div>
                 </div>
-                <h4 className="font-bold text-xl text-white">Dev Name {i}</h4>
-                <p className="text-indigo-400 font-mono text-xs mb-4 uppercase tracking-widest">Full Stack Developer</p>
+                <h4 className="font-bold text-xl text-white">{dev.nome}</h4>
+                <p className="text-indigo-400 font-mono text-xs mb-2 uppercase tracking-widest">{dev.stackPrincipal}</p>
+                <p className="text-slate-400 text-sm mb-4 line-clamp-2">{dev.bio}</p>
+                
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {['React', 'Node.js', 'PostgreSQL', 'Docker'].map(tag => (
-                    <span key={tag} className="text-[10px] bg-slate-900 border border-slate-700 px-2 py-1 rounded text-slate-300">
+                  {dev.tecnologias.map(tag => (
+                    <span key={tag} className="text-[10px] bg-slate-900 border border-slate-700 px-2 py-1 rounded text-slate-300 font-mono">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
-              <button className="w-full group flex items-center justify-center gap-2 bg-slate-700/50 hover:bg-indigo-600 py-3 rounded-xl transition text-sm font-semibold">
-                Ver Portfólio Completo
+              
+              <a 
+                href={`/perfil/${dev.id}`}
+                className="w-full group flex items-center justify-center gap-2 bg-slate-700/50 hover:bg-indigo-600 py-3 rounded-xl transition text-sm font-semibold"
+              >
+                Ver Perfil Completo
                 <ExternalLink size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </div>
           ))}
         </div>
+
+        {filteredDevs.length === 0 && (
+          <div className="text-center py-20 bg-slate-800/20 border border-dashed border-slate-700 rounded-2xl">
+            <p className="text-slate-500">Nenhum desenvolvedor encontrado nesta categoria.</p>
+          </div>
+        )}
       </section>
 
       {/* Footer Dark */}
