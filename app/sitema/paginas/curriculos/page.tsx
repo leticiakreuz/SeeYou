@@ -20,10 +20,10 @@ export default function FeedCurriculosPage() {
   const [devs] = useState<Developer[]>([
     {
       id: '1',
-      nome: 'Alex Rivera',
-      nivel: 'Senior',
-      stackPrincipal: 'Backend',
-      tecnologias: ['Go', 'PostgreSQL', 'Docker', 'Kubernetes'],
+      nome: 'Letícia Kreuzberg',
+      nivel: 'Junior',
+      stackPrincipal: 'fullstack',
+      tecnologias: ['JavaScript', 'SQL', 'Pascal', 'Next.js', 'Node.js', 'React', 'Tailwind', 'TypeScript'],
       github: '#',
       linkedin: '#',
       portfolio: '#',
@@ -42,7 +42,7 @@ export default function FeedCurriculosPage() {
     },
     {
       id: '3',
-      nome: 'Caio Martins',
+      nome: 'Alice pereira',
       nivel: 'Junior',
       stackPrincipal: 'Fullstack',
       tecnologias: ['Node.js', 'React', 'MongoDB', 'Express'],

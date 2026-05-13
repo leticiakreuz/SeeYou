@@ -10,9 +10,9 @@ export default function DevCVHub() {
   const devs = [
     {
       id: "1",
-      nome: "Alex Rivera",
-      nivel: "Senior",
-      stackPrincipal: "Back-end",
+      nome: "Letícia Kreuzberg",
+      nivel: "Junior",
+      stackPrincipal: "Full Stack",
       tecnologias: ["Go", "PostgreSQL", "Docker", "Kubernetes"],
       bio: "Especialista em sistemas distribuídos e arquitetura de microsserviços."
     },
@@ -26,7 +26,7 @@ export default function DevCVHub() {
     },
     {
       id: "3",
-      nome: "Caio Martins",
+      nome: "Alice Pereira",
       nivel: "Junior",
       stackPrincipal: "Full Stack",
       tecnologias: ["Node.js", "React", "MongoDB", "Express"],
@@ -153,7 +153,7 @@ export default function DevCVHub() {
               </div>
               
               <a 
-                href={`/perfil/${dev.id}`}
+                href={`/sitema/paginas/curriculos/${dev.id}`}
                 className="w-full group flex items-center justify-center gap-2 bg-slate-700/50 hover:bg-indigo-600 py-3 rounded-xl transition text-sm font-semibold"
               >
                 Ver Perfil Completo
@@ -173,7 +173,7 @@ export default function DevCVHub() {
       {/* Footer Dark */}
       <footer className="border-t border-slate-800 py-10 text-center">
         <p className="text-slate-500 text-sm italic">
-          &lt; Feito com ❤️ para a comunidade tech /&gt;
+          &lt;Letícia Kreuzberg 301-Ds /&gt;
         </p>
       </footer>
     </div>
