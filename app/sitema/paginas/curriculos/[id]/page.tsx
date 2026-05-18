@@ -46,11 +46,13 @@ export default function PerfilDevPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-300 p-6">
       <div className="max-w-4xl mx-auto">
-        <button 
-          onClick={() => router.back()}
+        <button
+          type="button"
+          onClick={() => router.push('/sitema/paginas/curriculos')}
           className="flex items-center gap-2 text-slate-500 hover:text-indigo-400 mb-8 transition-colors font-mono text-sm"
         >
           <ArrowLeft size={18} /> Voltar para a lista
+           href={(`/sitema/paginas/curriculos/`)}
         </button>
 
         <div className="bg-[#0A0A0A] border border-white/5 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
